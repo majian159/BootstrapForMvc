@@ -1,0 +1,68 @@
+﻿@using Rabbit.Bootstrap
+@model Web.Models.StudentModel
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>title</title>
+    <link rel="stylesheet" href="http://cdn.bootcss.com/twitter-bootstrap/3.0.3/css/bootstrap.min.css">
+    <link rel="stylesheet" href="http://cdn.bootcss.com/twitter-bootstrap/3.0.3/css/bootstrap-theme.min.css">
+    <script src="http://cdn.bootcss.com/jquery/1.10.2/jquery.min.js"></script>
+    <script src="http://cdn.bootcss.com/twitter-bootstrap/3.0.3/js/bootstrap.min.js"></script>
+
+    <script src="~/Scripts/jquery.validate.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+    <script src="~/Scripts/jquery.validate.bootstrap.js"></script>
+</head>
+<body>
+    <div class="container" style="margin-top: 100px">
+        @using (Html.Bootstrap().BeginForm(c => c.Type().Horizontal()))
+        {
+            <div class="form-group">
+                @Html.LabelFor(model => model.Name, new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-10">
+                    @Html.Bootstrap().TextBoxFor(model => model.Name)
+                    @Html.ValidationMessageFor(model => model.Name)
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.Age, new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-10">
+                    @Html.Bootstrap().TextBoxFor(model => model.Age)
+                    @Html.ValidationMessageFor(model => model.Age)
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.Class, new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-10">
+                    @Html.Bootstrap().TextBoxFor(model => model.Class)
+                    @Html.ValidationMessageFor(model => model.Class)
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.Enable, new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-10">
+                    @Html.CheckBoxFor(model => model.Enable)
+                    @Html.ValidationMessageFor(model => model.Enable)
+                </div>
+            </div>
+            <div class="text-center">
+                @Html.Bootstrap().Button("提交").Type().Submit().Style().Primary()
+                @Html.Bootstrap().Button("重置").Type().Reset()
+            </div>
+        }
+    </div>
+    <button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#test">
+        Launch demo modal
+    </button>
+    @(Html.Bootstrap().Modal("test")
+              .Header(c => c.Title("测试").ShowClose())
+              .Body("456")
+              .Footer(Html.Bootstrap().Button("测试").Style().Primary().Attribute("data-dismiss", "modal").ToHtmlString()))
+</body>
+</html>

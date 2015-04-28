@@ -1,0 +1,9 @@
+﻿################################################################################
+# 此 .gitignore 文件已由 Microsoft(R) Visual Studio 自动创建。
+################################################################################
+
+/packages
+/Rabbit.Bootstrap/bin/Debug
+/Rabbit.Bootstrap/obj/Debug
+/Web/bin
+/Web/obj/Debug
